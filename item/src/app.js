@@ -16,9 +16,9 @@ const comments = require('./routes/comments')
 // error handler
 onerror(app)
 
-// 跨域
+// 支持前端跨域
 app.use(cors({
-  origin:'http://localhost:8080',   // 支持前端跨域的地址
+  origin:'http://localhost:8080',  
   credentials:true                  // 允许携带cookie
 }));
 
@@ -34,14 +34,14 @@ app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
 
-app.keys=['session-koa2'];   // 密钥
+app.keys=['session-koa2'];  
 // session 插件，自动配置 session 与 cookie 的一一对应关系
 app.use(session({
   // 配置cookie
   cookie:{
-    path:"/",       // 有效路径 根目录以下都有些
-    httpOnly:true,    // 只允许服务端操作 cookie
-    maxAge:24*60*60*1000    // 有效时间 1天
+    path:"/",                // 有效路径 根目录以下都有些
+    httpOnly:true,           // 只允许服务端操作 cookie
+    maxAge:24*60*60*1000     // 有效时间 1天
   }
 }));
 
